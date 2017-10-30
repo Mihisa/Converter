@@ -14,15 +14,26 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_above="@+id/gridLayout"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout">
 
+
+        <TextView
+            android:id="@+id/previousText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_gap"
+            android:textAlignment="textEnd"
+            android:layout_weight="1"
+            android:textColor="#6e6e6e"
+            android:textSize="32sp" />
 
         <TextView
             android:id="@+id/textView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_margin="@dimen/default_gap"
+            android:layout_weight="1"
             android:textAlignment="textEnd"
             android:textColor="#1d1d1d"
             android:textSize="32sp" />
@@ -218,6 +229,7 @@
             android:onClick="onClickResult"
             android:text="="
             android:textColor="#ffffff"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             />
 
         <Button
@@ -250,4 +262,5 @@
             android:text="."
             android:textSize="40sp" />
     </GridLayout>
+
 </RelativeLayout>

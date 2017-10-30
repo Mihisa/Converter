@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private Button zero, one, two, three, four, five, six, seven, eight, nine;
     private Button dot, multiply, divide, percent, clear;
     private ImageButton back, minus, result, plus;
-    private TextView outputResult, showInput;
+    private TextView outputResult, showInput, previousText;
     private static String currentDisplayedInput = "";
     private static float inputToBeParsed = 0;
     private static float resultOfEverything = 0;
@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         back = (ImageButton)findViewById(R.id.backspace);
         clear = (Button)findViewById(R.id.clear);
 
+        previousText = (TextView) findViewById(R.id.previousText);
         outputResult = (TextView) findViewById(R.id.textView);
         showInput = (TextView) findViewById(R.id.textView1);
         outputResult.setText("0");
@@ -67,10 +68,15 @@ public class MainActivity extends AppCompatActivity {
             currentDisplayedInput = currentDisplayedInput + "0";
             showInputString = sign + currentDisplayedInput;
             showInput.setText(showInputString);
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
+
         } else {
             currentDisplayedInput = currentDisplayedInput + "0";
             showInputString = sign + currentDisplayedInput;
             showInput.setText(showInputString);
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
         }
     }
 
@@ -79,9 +85,13 @@ public class MainActivity extends AppCompatActivity {
         if (sign == '\u0000') {
             currentDisplayedInput = currentDisplayedInput + "1";
             showInput.setText(currentDisplayedInput);
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
         } else {
             currentDisplayedInput = currentDisplayedInput + "1";
             showInput.setText(sign + currentDisplayedInput);
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
         }
 
     }
@@ -90,9 +100,13 @@ public class MainActivity extends AppCompatActivity {
         if (sign == '\u0000') {
             currentDisplayedInput = currentDisplayedInput + "2";
             showInput.setText(currentDisplayedInput);
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
         } else {
             currentDisplayedInput = currentDisplayedInput + "2";
             showInput.setText(sign + currentDisplayedInput);
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
         }
     }
 
@@ -100,9 +114,13 @@ public class MainActivity extends AppCompatActivity {
         if (sign == '\u0000') {
             currentDisplayedInput = currentDisplayedInput + "3";
             showInput.setText(currentDisplayedInput);
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
         } else {
             currentDisplayedInput = currentDisplayedInput + "3";
             showInput.setText(sign + currentDisplayedInput);
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
         }
     }
 
@@ -110,9 +128,13 @@ public class MainActivity extends AppCompatActivity {
         if (sign == '\u0000') {
             currentDisplayedInput = currentDisplayedInput + "4";
             showInput.setText(currentDisplayedInput);
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
         } else {
             currentDisplayedInput = currentDisplayedInput + "4";
             showInput.setText(sign + currentDisplayedInput);
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
         }
     }
 
@@ -120,9 +142,13 @@ public class MainActivity extends AppCompatActivity {
         if (sign == '\u0000') {
             currentDisplayedInput = currentDisplayedInput + "5";
             showInput.setText(currentDisplayedInput);
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
         } else {
             currentDisplayedInput = currentDisplayedInput + "5";
             showInput.setText(sign + currentDisplayedInput);
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
         }
     }
 
@@ -130,9 +156,13 @@ public class MainActivity extends AppCompatActivity {
         if (sign == '\u0000') {
             currentDisplayedInput = currentDisplayedInput + "6";
             showInput.setText(currentDisplayedInput);
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
         } else {
             currentDisplayedInput = currentDisplayedInput + "6";
             showInput.setText(sign + currentDisplayedInput);
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
         }
     }
 
@@ -140,9 +170,13 @@ public class MainActivity extends AppCompatActivity {
         if (sign == '\u0000') {
             currentDisplayedInput = currentDisplayedInput + "7";
             showInput.setText(currentDisplayedInput);
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
         } else {
             currentDisplayedInput = currentDisplayedInput + "7";
             showInput.setText(sign + currentDisplayedInput);
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
         }
     }
 
@@ -150,9 +184,13 @@ public class MainActivity extends AppCompatActivity {
         if (sign == '\u0000') {
             currentDisplayedInput = currentDisplayedInput + "8";
             showInput.setText(currentDisplayedInput);
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
         } else {
             currentDisplayedInput = currentDisplayedInput + "8";
             showInput.setText(sign + currentDisplayedInput);
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
         }
     }
 
@@ -160,9 +198,13 @@ public class MainActivity extends AppCompatActivity {
         if (sign == '\u0000') {
             currentDisplayedInput = currentDisplayedInput + "9";
             showInput.setText(currentDisplayedInput);
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
         } else {
             currentDisplayedInput = currentDisplayedInput + "9";
             showInput.setText(sign + currentDisplayedInput);
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
             }
 
         }
@@ -177,22 +219,40 @@ public class MainActivity extends AppCompatActivity {
             }
             currentDisplayedInput = currentDisplayedInput + ".";
             showInput.setText(sign + currentDisplayedInput);
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
 
         }
     }
 
     public void onClickPlus(View view) {
         if (currentDisplayedInput == "") {
+            previousText.setText(removeZero(String.valueOf(resultOfEverything)));
             showInput.setText("+");
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
+            plusAction = true;
+            minusAction = false;
+            multiplyAction = false;
+            divideAction = false;
+            sign = '+';
+        } else if(currentDisplayedInput == "-") {
+            showInput.setText("+");
+            previousText.setText(removeZero(String.valueOf(resultOfEverything)));
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
             plusAction = true;
             minusAction = false;
             multiplyAction = false;
             divideAction = false;
             sign = '+';
         } else {
+            previousText.setText(removeZero(currentDisplayedInput));
             resultOfEverything += Float.parseFloat(currentDisplayedInput);
             currentDisplayedInput = "";
             showInput.setText("+");
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
             plusAction = true;
             minusAction = false;
             multiplyAction = false;
@@ -203,18 +263,33 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickMinus(View view) {
         if (currentDisplayedInput == "") {
+            previousText.setText(removeZero(String.valueOf(resultOfEverything)));
             currentDisplayedInput = "-";
             showInput.setText("-");
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
             minusAction = true;
             plusAction = false;
             multiplyAction = false;
             divideAction = false;
             sign = '\u0000';
         } else if(currentDisplayedInput == "-") {
+            previousText.setText(removeZero(String.valueOf(resultOfEverything)));
+            showInput.setText("-");
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
+            minusAction = true;
+            plusAction = false;
+            multiplyAction = false;
+            divideAction = false;
+            sign = '\u0000';
         } else {
+            previousText.setText(removeZero(currentDisplayedInput));
             resultOfEverything += Float.parseFloat(currentDisplayedInput);
             currentDisplayedInput = "";
             showInput.setText("-");
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
             minusAction = true;
             plusAction = false;
             multiplyAction = false;
@@ -227,16 +302,32 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickMultiply(View view) {
         if (currentDisplayedInput == "") {
+            previousText.setText(removeZero(String.valueOf(resultOfEverything)));
             showInput.setText("x");
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
+            multiplyAction = true;
+            minusAction = false;
+            plusAction = false;
+            divideAction = false;
+            sign = 'x';
+        } else if(currentDisplayedInput == "-") {
+            previousText.setText(removeZero(String.valueOf(resultOfEverything)));
+            showInput.setText("x");
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
             multiplyAction = true;
             minusAction = false;
             plusAction = false;
             divideAction = false;
             sign = 'x';
         } else {
+            previousText.setText(removeZero(currentDisplayedInput));
             resultOfEverything += Float.parseFloat(currentDisplayedInput);
             currentDisplayedInput = "";
             showInput.setText("x");
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
             multiplyAction = true;
             minusAction = false;
             plusAction = false;
@@ -247,17 +338,32 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickDivide(View view) {
         if (currentDisplayedInput == "") {
+            previousText.setText(removeZero(String.valueOf(resultOfEverything)));
             showInput.setText("/");
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
             divideAction = true;
             minusAction = false;
             multiplyAction = false;
             plusAction = false;
             sign = '/';
-        }
-        else {
+        }else if(currentDisplayedInput == "-") {
+            previousText.setText(removeZero(String.valueOf(resultOfEverything)));
+            showInput.setText("/");
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
+            divideAction = true;
+            minusAction = false;
+            multiplyAction = false;
+            plusAction = false;
+            sign = '/';
+        } else {
+            previousText.setText(removeZero(currentDisplayedInput));
             resultOfEverything += Float.parseFloat(currentDisplayedInput);
             currentDisplayedInput = "";
             showInput.setText("/");
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
             divideAction = true;
             minusAction = false;
             multiplyAction = false;
@@ -271,10 +377,14 @@ public class MainActivity extends AppCompatActivity {
             currentDisplayedInput = currentDisplayedInput + "000";
             showInputString = sign + currentDisplayedInput;
             showInput.setText(showInputString);
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
         } else {
             currentDisplayedInput = currentDisplayedInput + "000";
             showInputString = sign + currentDisplayedInput;
             showInput.setText(showInputString);
+            outputResult.setTextSize(32);
+            showInput.setTextSize(42);
         }
     }
 
@@ -282,6 +392,7 @@ public class MainActivity extends AppCompatActivity {
         if (currentDisplayedInput == "" | currentDisplayedInput == "-") {
         }
         else {
+
             inputToBeParsed = Float.parseFloat(currentDisplayedInput);
 
             if (plusAction) {
@@ -334,7 +445,7 @@ public class MainActivity extends AppCompatActivity {
         int length = currentDisplayedInput.length();
         if (currentDisplayedInput.length() == 1) {
             currentDisplayedInput = "";
-            showInput.setText("0");
+            showInput.setText(sign + "0");
         } else if(currentDisplayedInput.length() == 0) {
             currentDisplayedInput = "";
             showInput.setText("0");
@@ -349,6 +460,7 @@ public class MainActivity extends AppCompatActivity {
         currentDisplayedInput = "";
         resultOfEverything = 0;
         sign = '\u0000';
+        previousText.setText("");
         outputResult.setText("0");
         showInput.setText("0");
     }

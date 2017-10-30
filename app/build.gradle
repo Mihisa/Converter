@@ -3,10 +3,10 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         config {
-            keyAlias 'MiConverter'
-            keyPassword 'NKr509qM'
+            keyAlias 'MiConverter2'
+            keyPassword 'TGbn69qaTY'
             storeFile file('C:/Users/Mihisa/Desktop/MiConverter2.jks')
-            storePassword 'NKr509qM'
+            storePassword 'TGbn69qaTY'
         }
     }
     compileSdkVersion 25
@@ -15,8 +15,8 @@ android {
         applicationId 'com.mihisa.miconverter'
         minSdkVersion 23
         targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "3.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
